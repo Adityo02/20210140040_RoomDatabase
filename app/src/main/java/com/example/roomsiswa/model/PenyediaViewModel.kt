@@ -1,5 +1,7 @@
 package com.example.roomsiswa.model
 
-object PenyediaViewModel {
+import androidx.lifecycle.viewmodel.viewModelFactory
 
+object PenyediaViewModel {
+    val Factory = viewModelFactory {}
 }
