@@ -16,5 +16,7 @@ class HomeViewModel(private val repositoriSiswa: RepositoriSiswa): ViewModel() {
         .stateIn(scope = viewModelScope,
             started = SharingStarted.WhileSubscribed(TIMEOUT_MILLIS),
             initialValue = HomeUiState())
-    data class HomeUiState()
+    data class HomeUiState(
+        val listSiswa: List<Siswa> = listOf()
+    )
 }
