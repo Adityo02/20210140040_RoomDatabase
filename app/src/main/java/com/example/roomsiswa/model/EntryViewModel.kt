@@ -1,4 +1,5 @@
 package com.example.roomsiswa.model
 
-class EntryViewModel {
+class EntryViewModel(){
+
 }
