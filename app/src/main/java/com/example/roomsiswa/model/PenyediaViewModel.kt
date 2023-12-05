@@ -8,5 +8,8 @@ object PenyediaViewModel {
         initializer {
             HomeViewModel(aplikasiSiswa().container.repositoriSiswa)
         }
+        initializer {
+            EntryViewModel(aplikasiSiswa().container.repositoriSiswa)
+        }
     }
 }
