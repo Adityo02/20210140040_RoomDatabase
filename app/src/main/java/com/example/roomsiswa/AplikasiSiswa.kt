@@ -5,5 +5,8 @@ import android.app.Application
 class AplikasiSiswa: Application() {
     lateinit var container: ContainerDataApp
 
-    override fun onCreate() {}
+    override fun onCreate() {
+        super.onCreate()
+        container = ContainerDataApp(this)
+    }
 }
