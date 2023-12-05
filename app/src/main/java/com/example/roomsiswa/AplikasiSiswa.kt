@@ -1,12 +1,13 @@
 package com.example.roomsiswa
 
 import android.app.Application
+import com.example.roomsiswa.repositori.ContainerDataAPP
 
 class AplikasiSiswa: Application() {
-    lateinit var container: ContainerDataApp
+    lateinit var container: ContainerDataAPP
 
     override fun onCreate() {
         super.onCreate()
-        container = ContainerDataApp(this)
+        container = ContainerDataAPP(this)
     }
 }
