@@ -24,6 +24,8 @@ import com.example.roomsiswa.ui.theme.halaman.DetailDestination
 import com.example.roomsiswa.ui.theme.halaman.DetailsScreen
 import com.example.roomsiswa.ui.theme.halaman.EntrySiswaScreen
 import com.example.roomsiswa.ui.theme.halaman.HomeScreen
+import com.example.roomsiswa.ui.theme.halaman.ItemEditDestination
+import com.example.roomsiswa.ui.theme.halaman.ItemEditScreen
 
 @Composable
 fun SiswaApp(navController: NavHostController = rememberNavController()){
@@ -59,10 +61,18 @@ fun HostNavigasi(
     navController: NavHostController,
     modifier: Modifier = Modifier
 ){
-    NavHost(navController = navController, startDestination = DestinasiHome.route, modifier = Modifier){
+    NavHost(
+        navController = navController,
+        startDestination = DestinasiHome.route,
+        modifier = Modifier
+    ){
         composable(DestinasiHome.route){
             HomeScreen(
-                navigateToItemEntry = { navController.navigate(DestinasiEntry.route)})
+                navigateToItemEntry = { navController.navigate(DestinasiEntry.route)},
+                onDetailClick = {
+                    navController.navigate("${DetailDestination.route}/$it")
+                },
+            )
         }
         composable(DestinasiEntry.route){
             EntrySiswaScreen(navigateBack = { navController.popBackStack() })
@@ -77,8 +87,20 @@ fun HostNavigasi(
             DetailsScreen(
                 navigateBack = { navController.popBackStack() },
                 navigateToEditItems = {
-                    //navController.navigate("$(ItemEditDestination.route)/$it")
-                })
+                    navController.navigate("$(ItemEditDestination.route)/$it")
+                }
+            )
+        }
+        composable(
+            ItemEditDestination.routeWithArgs,
+            arguments = listOf(navArgument(ItemEditDestination.itemIdArg) {
+                type = NavType.IntType
+            })
+        ){
+            ItemEditScreen(
+                navigateBack = { navController.popBackStack()},
+                onNavigateUp = { navController.navigateUp() }
+            )
         }
     }
 }
